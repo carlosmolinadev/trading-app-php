@@ -3,14 +3,11 @@
 namespace App\Providers;
 
 use App\Contracts\ITradeService;
-use App\Events\TradeOrderCreated;
-use App\Jobs\BinanceWorker;
+use App\Jobs\BinanceMarketDataProvider;
 use App\Listeners\BinanceMarketData;
-use App\Listeners\CreateOrder;
-use App\Services\BinanceWebSocketService;
+use App\Services\WebsocketService;
 use App\Services\TradeService;
-use Illuminate\Contracts\Foundation\Application;
-use Illuminate\Support\Facades\Event;
+use Illuminate\Support\Facades\Schedule;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -25,9 +22,9 @@ class AppServiceProvider extends ServiceProvider
             return new BinanceMarketData();
         });
         $this->app->bind(ITradeService::class, TradeService::class);
-        $this->app->singleton(BinanceWebSocketService::class, function ()
+        $this->app->singleton(WebsocketService::class, function ()
         {
-            return new BinanceWebSocketService('usdt');
+            return new WebsocketService('usdt');
         });
         // $this->app->singleton(CreateOrder::class, function ()
         // {

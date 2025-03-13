@@ -2,12 +2,15 @@
 
 namespace App\Listeners;
 
+use WebSocket\Client;
+use WebSocket\Connection;
+use WebSocket\Message\Message;
+use Illuminate\Support\Facades\DB;
+use WebSocket\Middleware\CloseHandler;
+use WebSocket\Middleware\PingResponder;
 use App\Events\BinanceMarketDataRequested;
 use Illuminate\Contracts\Events\Dispatcher;
-use Illuminate\Contracts\Queue\ShouldBeUnique;
 use Illuminate\Contracts\Queue\ShouldQueue;
-use Ratchet\Client\WebSocket;
-use React\EventLoop\Loop;
 
 class BinanceMarketData implements ShouldQueue
 {
@@ -37,60 +40,25 @@ class BinanceMarketData implements ShouldQueue
         return 'binance-market-data';
     }
 
-    public function handleMarketDataRequest(BinanceMarketDataRequested $event)
+    protected function checkForUpdates()
     {
-        $loop = Loop::get();
-        $reactConnector = new \React\Socket\Connector();
-        $connector = new \Ratchet\Client\Connector($loop, $reactConnector);
-        $requestParameter = $event->symbol . '@kline_' . $event->interval;
-        if (!in_array($event->symbol, $this->symbolList))
-        {
-            $this->symbolList[] = $event->symbol;
-        }
+        DB::select('select * from market_data_update where exchange_id = 1');
+    }
+
+    public function handleMarketDataRequest()
+    {
         $endpoint = "wss://stream.binance.com:9443/ws";
-        // $endpoint = "wss://stream.binance.com:9443/ws/{$event->symbol}@kline_{$event->interval}";
-        $connector->__invoke($endpoint)->then(
-            function (WebSocket $conn) use ($requestParameter)
+        $client = new Client($endpoint);
+        $client
+            ->addMiddleware(new CloseHandler())
+            ->addMiddleware(new PingResponder())
+            ->onText(function (Client $client, Connection $connection, Message $message)
             {
-                $conn->on('message', function (\Ratchet\RFC6455\Messaging\MessageInterface $msg) use ($conn)
-                {
-                    echo "Received: {$msg}\n";
-                    // $conn->close();
-                });
-
-                $conn->on('close', function ($code = null, $reason = null)
-                {
-                    echo "Connection closed ({$code} - {$reason})\n";
-                });
-                if ($this->connected)
-                {
-                    $data = json_encode([
-                        "method" => "UNSUBSCRIBE",
-                        "params" => [
-                            $requestParameter
-                        ],
-                        "id" => 1
-                    ]);
-                    $conn->send($data);
-                    $this->connected = false;
-                }
-                $data = json_encode([
-                    "method" => "SUBSCRIBE",
-                    "params" => [
-                        $requestParameter
-                    ],
-                    "id" => 1
-                ]);
-
-                $var = $conn;
-
-                $conn->send($data);
-            },
-            function (\Exception $e) use ($loop)
-            {
-                echo "Could not connect: {$e->getMessage()}\n";
-                $loop->stop();
-            }
-        );
+                // Act on incoming message
+                echo "Got message: {$message->getContent()} \n";
+                // Possibly respond to server
+                // $client->text("I got your your message");
+            })
+            ->start();
     }
 }

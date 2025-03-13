@@ -24,8 +24,9 @@ class ApiKeyRequest extends FormRequest
         return [
             'public' => 'required|string',
             'private' => 'required|string',
-            'exchange' => 'required|string',
-            'userId' => 'required|string',
+            'exchange_id' => 'required|string',
+            'user_id' => 'required|string',
         ];
     }
+    protected $redirect = '/settings/create';
 }

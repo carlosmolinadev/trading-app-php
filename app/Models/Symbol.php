@@ -10,6 +10,10 @@ class Symbol extends Model
     use HasFactory;
 
     /**
+     * @var string
+     */
+    protected $table = 'symbol';
+    /**
      * @var bool
      */
     public $timestamps = false;

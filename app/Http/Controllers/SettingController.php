@@ -7,111 +7,59 @@ use Illuminate\Http\Response;
 use App\Services\TradeService;
 use App\Services\SettingService;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Auth;
+use App\Http\Requests\SettingRequest;
 use App\Http\Requests\Trade\ApiKeyRequest;
 
 class SettingController extends Controller
 {
-    private TradeService $tradeService;
     private SettingService $settingService;
-    public function __construct(TradeService $tradeService, SettingService $settingService)
+    public function __construct(SettingService $settingService)
     {
-        $this->tradeService = $tradeService;
         $this->settingService = $settingService;
     }
     /**
      * Display a listing of the resource.
      */
-    public function index(Request $request)
+    public function index()
     {
-        try
-        {
-            $query = $request->query('exchange');
-            $user = $request->user();
-            if (!isset($user))
-            {
-                return response()->json([
-                    'message' => 'User not found',
-                ], Response::HTTP_NOT_FOUND);
-            };
-            return response()->json([
-                $this->tradeService->getApikey($user->id, $query)
-            ], Response::HTTP_OK);
-        }
-        catch (\Throwable $th)
-        {
-            Log::error($th->getMessage());
-            return response()->json([
-                'message' => 'Unable to retrieve api key',
-            ], Response::HTTP_UNPROCESSABLE_ENTITY);
-        }
+        //
     }
 
-    public function showApiKey(ApiKeyRequest $request)
+    /**
+     * Show the form for creating a new resource.
+     */
+    public function create()
     {
-        try
-        {
-            $user = $request->user();
-            if (!isset($user))
-            {
-                return response()->json([
-                    'message' => 'User not found',
-                ], Response::HTTP_NOT_FOUND);
-            };
-            if ($this->tradeService->createApikey($request))
-            {
-                return response()->json([
-                    'message' => 'Apikey created successfully',
-                ], Response::HTTP_CREATED);
-            };
-        }
-        catch (\Exception $e)
-        {
-            return response()->json([
-                'message' => 'Validation failed',
-                'errors' => $e->getMessage(),
-            ], Response::HTTP_UNPROCESSABLE_ENTITY);
-        }
-    }
-    public function create(ApiKeyRequest $request)
-    {
-        try
-        {
-            $user = $request->user();
-            if (!isset($user))
-            {
-                return response()->json([
-                    'message' => 'User not found',
-                ], Response::HTTP_NOT_FOUND);
-            };
-            return response()->json([
-                $this->tradeService->createApikey($request)
-            ], Response::HTTP_CREATED);
-        }
-        catch (\Exception $e)
-        {
-            Log::error($e->getMessage());
-            return response()->json([
-                'message' => 'Validation failed',
-            ], Response::HTTP_UNPROCESSABLE_ENTITY);
-        }
+        //
     }
 
-    // /**
-    //  * Display the specified resource.
-    //  */
-    // public function show(Request $request, int $id)
-    // {
-    //     try
-    //     {
-    //         $serchParams[] = $request->query('exchange');
-    //         $serchParams[] = $request->query('status');
-    //         return response()->json([$this->settingService->getSettings($id, $serchParams)], Response::HTTP_OK);
-    //     }
-    //     catch (\Throwable $th)
-    //     {
-    //         //throw $th;
-    //     }
-    // }
+    /**
+     * Store a newly created resource in storage.
+     */
+    public function store(SettingRequest $request)
+    {
+        $validatedData = $request->validated();
+        $validatedData['user_id'] = Auth::id();
+        $this->settingService->addApiKey($validatedData);
+        return response()->json(['message' => 'Settings saved successfully'], Response::HTTP_CREATED);
+    }
+
+    /**
+     * Display the specified resource.
+     */
+    public function show(string $id)
+    {
+        //
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     */
+    public function edit(string $id)
+    {
+        //
+    }
 
     /**
      * Update the specified resource in storage.

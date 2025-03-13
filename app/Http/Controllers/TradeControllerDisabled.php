@@ -13,7 +13,7 @@
 // use App\Listeners\BinanceMarketData;
 // use Illuminate\Support\Facades\Auth;
 // use App\Http\Requests\Trade\TradeRequest;
-// use App\Services\BinanceWebSocketService;
+// use App\Services\WebsocketService;
 // use App\Http\Requests\Trade\TradeSettingRequest;
 
 // class TradeController extends Controller
@@ -21,7 +21,7 @@
 //     protected $tradeService;
 //     protected $binanceWebSocket;
 //     protected $binanceMarketData;
-//     public function __construct(TradeService $tradeService, BinanceWebSocketService $binanceWebSocket, BinanceMarketData $binanceMarketData)
+//     public function __construct(TradeService $tradeService, WebsocketService $binanceWebSocket, BinanceMarketData $binanceMarketData)
 //     {
 //         $this->tradeService = $tradeService;
 //         $this->binanceWebSocket = $binanceWebSocket;

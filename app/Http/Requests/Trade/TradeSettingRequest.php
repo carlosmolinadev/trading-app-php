@@ -2,6 +2,9 @@
 
 namespace App\Http\Requests\Trade;
 
+use App\Enums\TradeSettingMode;
+use App\Models\TradeSetting;
+use Illuminate\Validation\Rule;
 use Illuminate\Foundation\Http\FormRequest;
 
 class TradeSettingRequest extends FormRequest
@@ -22,18 +25,30 @@ class TradeSettingRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'tradeId' => 'required|integer',
-            'name' => 'required|string|max:25',
-            'riskReward' => 'nullable|integer',
-            'retryAttempt' => 'required|integer',
-            'skipAttempt' => 'required|integer|min:0',
-            'candleCloseTrigger' => 'required|boolean',
-            'riskedAmount' => 'required|numeric|min:0',
-            'stopLossWickClose' => 'required|boolean',
-            'stopLossWickCloseValue' => 'required|integer',
-            'secureTradeOnProfit' => 'required|boolean',
-            'secureTradeValue' => 'required|integer',
-
+            'name' => 'required|string|max:100',
+            'retry_attempt' => 'nullable',
+            'skip_attempt' => 'nullable',
+            'risk_percentage' => 'required',
+            'open_on_candle_close' => 'nullable',
+            'inactive_order_cancel_minutes' => 'required',
+            'order_trade_settings' => 'nullable|string|max:2000',
         ];
     }
+
+    /**
+     * Prepare the data for validation.
+     */
+    protected function prepareForValidation(): void
+    {
+        $this->merge([
+            // 'retry_attempt' => intval($this->retry_attempt),
+            // 'skip_attempt' => intval($this->skip_attempt),
+            // 'risk_percentage' => intval($this->risk_percentage),
+            // 'open_on_candle_close' => boolval($this->open_on_candle_close),
+            // 'inactive_order_cancel_minutes' => intval($this->inactive_order_cancel_minutes),
+            // 'order_trade_settings' => strval($this->order_trade_settings),
+        ]);
+    }
+
+    protected $redirect = '/trade-setting/create';
 }

@@ -8,5 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class TradeSetting extends Model
 {
     use HasFactory;
-    protected $fillable = ['name', 'risk_reward', 'retry_attempt', 'skip_attempt', 'risked_amount', 'candle_close_trigger'];
+    protected $guarded = [];
+    protected $table = 'trade_setting';
 }

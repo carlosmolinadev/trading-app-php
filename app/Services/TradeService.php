@@ -2,28 +2,29 @@
 
 namespace App\Services;
 
-use App\DTOs\ApiKeyDto;
-use App\Contracts\ITradeService;
-use App\Http\Requests\Trade\ApiKeyRequest;
-use App\Http\Requests\Trade\TradeRequest;
-use App\Http\Requests\Trade\TradeSettingRequest;
-use App\Models\ApiKey;
+use stdClass;
 use App\Models\Trade;
+use App\Models\ApiKey;
+use App\DTOs\ApiKeyDto;
+use App\Models\TradeOrder;
 use App\Models\TradeSetting;
+use App\Contracts\ITradeService;
+use App\Enums\OrderType;
+use App\Enums\TradeStatus;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
+use App\Http\Requests\Trade\TradeRequest;
+use App\Http\Requests\Trade\ApiKeyRequest;
+use App\Http\Requests\Trade\TradeSettingRequest;
+use ReflectionEnum;
 
 class TradeService
 {
-    public function getTradeSetting(int $userId): array
+    public function getTradeSetting(int $userId)
     {
         try
         {
-            $resultSet = DB::select(
-                'select * from trade_settings where user_id = ?',
-                [$userId]
-            );
-            return $resultSet;
+            $test = DB::table('trade_settings')->where('user_id', $userId)->get();
         }
         catch (\Exception $e)
         {
@@ -75,14 +76,9 @@ class TradeService
     {
         try
         {
-            $trade = new Trade;
-            $trade->symbol = $request['symbol'];
-            // $trade->derivate = $request['derivate'];
-            // $trade->side = $request['side'];
-            $trade->exchange_id = $request['exchange_id'];
-            $trade->user_id = $request['user_id'];
-            $trade->save();
-            $tradeId = $trade->id;
+            $orders = $request['orders'];
+            $request['trade_status'] = TradeStatus::Created->value;
+
             return true;
         }
         catch (\Exception $e)
@@ -91,24 +87,21 @@ class TradeService
             return false;
         }
     }
-    public function createTradeSetting(TradeSettingRequest $setting): bool
+    public function createTradeSetting($data): bool
     {
         try
         {
-            return DB::insert(
-                'insert into trade_settings(user_id, name, retry_attempt, skip_attempt, candle_close_trigger, risk_amount_trade, stop_loss_wick_count_close, stop_loss_wick_close, trade_id) values (?,?,?,?,?,?,?,?,?,?)',
-                [
-                    $setting->userId,
-                    $setting->name,
-                    $setting->retryAttempt,
-                    $setting->skipAttempt,
-                    $setting->candleCloseTrigger,
-                    $setting->riskAmountTrade,
-                    $setting->stopLossWickCountClose,
-                    $setting->stopLossWickClose,
-                    $setting->tradeId
-                ]
-            );
+            return DB::table('trade_setting')->insert([
+                'name' => $data['name'],
+                'retry_attempt' => $data['retry_attempt'],
+                'skip_attempt' => $data['skip_attempt'],
+                'risk_percentage' => $data['risk_percentage'],
+                'open_trade_mode' => $data['open_trade_mode'],
+                'open_trade_value' => $data['open_trade_value'],
+                'stop_loss_mode' => $data['stop_loss_mode'],
+                'stop_loss_value' => $data['stop_loss_value'],
+                'created_at' => now()->toImmutable()->format('Y-m-d H:i:s'),
+            ]);
         }
         catch (\Exception $e)
         {
@@ -169,6 +162,23 @@ class TradeService
         {
             Log::error($e->getMessage());
             return false;
+        }
+    }
+
+    public function createTradeOrder(int $tradeId): stdClass
+    {
+        try
+        {
+            $tradeOrder = DB::select('
+                    select trade_id as tradeId, limit_price as limitPrice from trade t
+                    inner join trade_order tor 
+                        on tor.trade_id = t.id
+                    where t.id = ?', [$tradeId]);
+            return $tradeOrder[0];
+        }
+        catch (\Exception $e)
+        {
+            Log::error($e->getMessage());
         }
     }
 }

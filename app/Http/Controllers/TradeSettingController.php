@@ -2,55 +2,49 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\View\View;
 use App\Models\TradeSetting;
-use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Log;
+use Illuminate\Http\Response;
+use App\Services\TradeService;
+use Illuminate\Support\Facades\Auth;
+use App\Http\Requests\Trade\TradeSettingRequest;
 
 class TradeSettingController extends Controller
 {
+    public function __construct(TradeService $tradeService)
+    {
+    }
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        return 'Hello Wrodl';
+        $tradeSettings = TradeSetting::where('user_id', Auth::id());
+        return view('trade.setting.index', compact('tradeSettings'));
     }
 
     /**
      * Show the form for creating a new resource.
      */
-    public function create(): View
+    public function create(Request $request)
     {
-        return view('trade.partials.trade-setting');
+        $data['openOrderOptions'] = ['Low Candle', 'Middle Candle', 'High Candle', 'Wick'];
+        $data['stopLossOptions'] = ['Candle', 'Wick'];
+        $data['takeProfitOptions'] = ['Stop Loss Ratio'];
+
+        return view('trade-setting.create', ['data' => $data]);
     }
+
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(TradeSettingRequest $request)
     {
-        try
-        {
-            $validated = $request->validate([
-                'trade_id' => 'required',
-                'name' => 'required|string|max:25',
-                'risk_reward' => 'boolean',
-                'retry_attempt' => 'nullable',
-                'skip_attempt' => 'nullable',
-                'candle_close_trigger' => 'boolean',
-                'risked_amount' => 'required|min:0',
-                'stop_loss_wick_close' => 'boolean',
-                'secure_trade_profit' => 'boolean',
-            ]);
-            TradeSetting::create($validated);
-            return $validated;
-        }
-        catch (\Exception $e)
-        {
-            Log::error($e->getMessage());
-            throw $e;
-        }
+        $validatedData = $request->validated();
+        $validatedData['user_id'] = Auth::id();
+        redirect(route('trade-setting.index'))->with('success', 'Trade setting created successfully.');
     }
 
     /**
@@ -83,5 +77,21 @@ class TradeSettingController extends Controller
     public function destroy(TradeSetting $tradeSetting)
     {
         //
+    }
+
+    public function toggleOrder(Request $request)
+    {
+        $data = [];
+        if ($request->has('open_order_setting_checkbox'))
+        {
+            $data['openOrderSetting'] = !$request->input('open_order_setting_checkbox');
+            $data['orderSettings'][] = ['open_order_setting' => ['Low Candle', 'Middle Candle', 'High Candle', 'Wick']];
+        }
+        if ($request->has('stop_loss_setting_checkbox'))
+        {
+            $data['stopLossSetting'] = !$request->input('open_order_setting_checkbox');
+            $data['orderSettings'][] = ['stop_loss_setting' => ['Candle', 'Wick']];
+        }
+        return view('trade-setting.fragments.toggle-order', ['data' => $data]);
     }
 }

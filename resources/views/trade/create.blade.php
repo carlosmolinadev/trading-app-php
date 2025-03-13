@@ -1,94 +1,115 @@
-{{-- <div>
-    <form action="/trade" method="post">
+<x-app-layout>
+    <form class="container mx-auto px-8" method="POST" action="{{ route('trade.store') }}">
         @csrf
-        <label for="symbol">Symbol:</label>
-        <input type="text" id="symbol" name="symbol" required>
-        <input type="submit" value="Submit">
-    </form>
-
-</div> --}}
-@php
-    $name = 1;
-@endphp
-
-<div x-data="{ show: false, username: {{ $name }} }">
-    <p>{{ $name }}</p>
-    <button hx-get={{ route('trade.create') }} hx-target="#main-div">Add post</button>
-    Username: <strong x-text="username"></strong>
-    <p x-show="show">I am hidden if false</p>
-    <button x-on:click="">Toggle</button>
-</div>
-
-
-
-<!-- Modal toggle -->
-<button data-modal-target="authentication-modal" data-modal-toggle="authentication-modal"
-    class="block text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-    type="button">
-    Toggle modal
-</button>
-
-<!-- Main modal -->
-<div id="authentication-modal" tabindex="-1" aria-hidden="true"
-    class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
-    <div class="relative p-4 w-full max-w-md max-h-full">
-        <!-- Modal content -->
-        <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
-            <!-- Modal header -->
-            <div class="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600">
-                <h3 class="text-xl font-semibold text-gray-900 dark:text-white">
-                    Sign in to our platform
-                </h3>
-                <button type="button"
-                    class="end-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white"
-                    data-modal-hide="authentication-modal">
-                    <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
-                        viewBox="0 0 14 14">
-                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
-                    </svg>
-                    <span class="sr-only">Close modal</span>
-                </button>
+        <p class="text-xl font-medium my-4">Create Trade</p>
+        <div class="grid gap-4 sm:grid-cols-12 ">
+            <div class="sm:col-span-3">
+                <x-input-label for="exchange" value="Select Exchange" />
+                <x-select id="exchange" name="exchange_id" hx-get="{{ route('option.symbol') }}" hx-trigger="change"
+                    hx-target="#symbol" hx-swap="outerHTML">
+                    <option value=""></option>
+                    @foreach ($exchanges as $exchange)
+                        <option value="{{ $exchange->id }}"
+                            @if ($exchange->id == old('exchange_id')) selected="selected" @endif>
+                            {{ $exchange->name }}</option>
+                    @endforeach
+                </x-select>
+                <x-input-error :messages="$errors->get('exchange_id')" class="mt-2" />
             </div>
-            <!-- Modal body -->
-            <div class="p-4 md:p-5">
-                <form class="space-y-4" action="#">
-                    <div>
-                        <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your
-                            email</label>
-                        <input type="email" name="email" id="email"
-                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
-                            placeholder="name@company.com" required />
-                    </div>
-                    <div>
-                        <label for="password" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your
-                            password</label>
-                        <input type="password" name="password" id="password" placeholder="••••••••"
-                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
-                            required />
-                    </div>
-                    <div class="flex justify-between">
-                        <div class="flex items-start">
-                            <div class="flex items-center h-5">
-                                <input id="remember" type="checkbox" value=""
-                                    class="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-blue-300 dark:bg-gray-600 dark:border-gray-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800"
-                                    required />
-                            </div>
-                            <label for="remember"
-                                class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Remember me</label>
-                        </div>
-                        <a href="#" class="text-sm text-blue-700 hover:underline dark:text-blue-500">Lost
-                            Password?</a>
-                    </div>
-                    <button type="submit"
-                        class="w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Login
-                        to your account</button>
-                    <div class="text-sm font-medium text-gray-500 dark:text-gray-300">
-                        Not registered? <a href="#"
-                            class="text-blue-700 hover:underline dark:text-blue-500">Create account</a>
-                    </div>
-                </form>
+
+            <div class="sm:col-span-3">
+                <x-input-label for="derivate" value="Select Derivate" />
+                <x-select id="derivate" name="derivate">
+                    <option value=""></option>
+                    @foreach ($derivates as $derivate)
+                        <option value="{{ $derivate->name }}"
+                            @if ($derivate->name == old('derivate')) selected="selected" @endif>
+                            {{ $derivate->name }}</option>
+                    @endforeach
+                </x-select>
+                <x-input-error :messages="$errors->get('derivate')" class="mt-2" />
+            </div>
+
+            <div class="sm:col-span-3">
+                <x-input-label for="symbol" value="Select Symbol" />
+                <x-select id="symbol" name="symbol">
+                    <option value=""></option>
+                    @foreach ($symbols as $option)
+                        <option value="{{ $option->id }}"
+                            @if ($option->id == old('symbol')) selected="selected" @endif>
+                            {{ $option->name }}</option>
+                    @endforeach
+                </x-select>
+                <x-input-error :messages="$errors->get('symbol')" class="mt-2" />
+            </div>
+
+            <div class="sm:col-span-3">
+                <x-input-label for="order_type" value="Select Order Type" />
+                <x-select id="order_type" name="order_type">
+                    <option value=""></option>
+                    @foreach ($orderTypes as $option)
+                        <option value="{{ $option->id }}"
+                            @if ($option->id == old('order_type')) selected="selected" @endif>
+                            {{ $option->name }}</option>
+                    @endforeach
+                </x-select>
+                <x-input-error :messages="$errors->get('order_type')" class="mt-2" />
+            </div>
+
+            <div class="sm:col-span-6 flex">
+                <div class="pr-4 flex-1">
+                    <x-input-label for="quantity" value="Quantity" />
+                    <x-text-input type="text" id="price" :value="old('quantity')" />
+                    <x-input-error :messages="$errors->get('price')" class="mt-2" />
+                </div>
+                <div class="flex-1">
+                    <x-input-label for="amount" value="Amount" />
+                    <x-text-input type="text" id="amount" :value="old('amount')" />
+                    <x-input-error :messages="$errors->get('amount')" class="mt-2" />
+                </div>
+            </div>
+
+
+            <div class="sm:col-span-3">
+                <x-input-label for="price" value="Price" />
+                <x-text-input type="text" id="price" :value="old('price')" />
+                <x-input-error :messages="$errors->get('price')" class="mt-2" />
+            </div>
+
+            <div class="sm:col-span-3">
+                <x-input-label for="order_type" value="Select Trade Setting" />
+                <x-select id="order_type" name="order_type">
+                    @if (count($tradeSettings) == 0)
+                        <option value=""></option>
+                    @else
+                        @foreach ($tradeSettings as $option)
+                            <option value="{{ $option->id }}"
+                                @if ($option->id == old('order_type')) selected="selected" @endif>
+                                {{ $option->name }}
+                            </option>
+                        @endforeach
+                    @endif
+                </x-select>
+                <x-input-error :messages="$errors->get('order_type')" class="mt-2" />
             </div>
         </div>
+
+        <div class="flex mt-4 border-t border-red-800">
+            <div class="pr-4 mt-4 flex-1">
+                <x-input-label for="take_profit" value="Take Profit" />
+                <x-text-input type="text" id="take_profit" :value="old('take_profit')" />
+                <x-input-error :messages="$errors->get('take_profit')" class="mt-2" />
+            </div>
+            <div class="flex-1">
+                <x-input-label for="stop_loss" value="Stop Loss" />
+                <x-text-input type="text" id="stop_loss" :value="old('stop_loss')" />
+                <x-input-error :messages="$errors->get('stop_loss')" class="mt-2" />
+            </div>
+        </div>
+        <div class="">
+            <x-primary-button type="button">Advanced</x-primary-button>
+        </div>
+        <x-primary-button type="submit">Submit</x-primary-button>
+    </form>
     </div>
-</div>
+</x-app-layout>

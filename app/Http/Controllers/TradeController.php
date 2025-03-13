@@ -3,24 +3,30 @@
 namespace App\Http\Controllers;
 
 use App\Models\Trade;
+use App\Models\Symbol;
+use App\Enums\Derivate;
 use Illuminate\Http\Request;
+use App\Services\TradeService;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Http;
+use App\Http\Requests\Trade\TradeRequest;
+use App\Models\TradeSetting;
 
 class TradeController extends Controller
 {
+    public function __construct(protected TradeService $tradeService)
+    {
+    }
+
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        // $user = Auth::user();
-        // if (!$user)
-        // {
-        //     return redirect(route('login'));
-        // }
-        // $trades = Trade::where('user_id', $user->id)->get();
-        return view('trade.index', compact('trades'));
-        $trades = Trade::where('user_id', Auth::user());
+        // $userId = ;
+        $test = Auth::id();
+        $trades = Trade::where('user_id', Auth::id())->get();
         return view('trade.index');
     }
 
@@ -29,15 +35,31 @@ class TradeController extends Controller
      */
     public function create()
     {
-        return view('trade.create');
+        $exchanges = DB::select('select * from exchange');
+        $derivates = Derivate::cases();
+        $orderTypes = DB::select('select * from order_type');
+        $tradeSettings = TradeSetting::where('user_id', Auth::id())->get();
+        $symbols = [];
+        if (old('exchange_id'))
+        {
+            $symbols = Symbol::where('exchange_id', old('exchange_id'))->get();
+        }
+        return view('trade.create', compact('exchanges', 'derivates', 'symbols', 'orderTypes', 'tradeSettings'));
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(TradeRequest $request)
     {
-        //
+        $validated = $request->validated();
+        unset($validated['orders']);
+        // $validated['user_id'] = Auth::id();
+
+        DB::table('trade')->insert($validated);
+
+        $this->tradeService->createTrade($request->all());
+        return redirect('trade.create');
     }
 
     /**
@@ -45,7 +67,6 @@ class TradeController extends Controller
      */
     public function show(Trade $trade)
     {
-        //
     }
 
     /**

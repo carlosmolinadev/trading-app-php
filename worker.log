@@ -1,0 +1,273 @@
+Xdebug: [Step Debug] Could not connect to debugging client. Tried: localhost:9003 (through xdebug.client_host/xdebug.client_port).Xdebug: [Step Debug] Could not connect to debugging client. Tried: localhost:9003 (through xdebug.client_host/xdebug.client_port).
+
+
+
+   Error 
+   Error 
+
+
+  Class "Aws\Sqs\SqsClient" not found
+  Class "Aws\Sqs\SqsClient" not found
+
+
+  at vendor/laravel/framework/src/Illuminate/Queue/Connectors/SqsConnector.php:29
+  at vendor/laravel/framework/src/Illuminate/Queue/Connectors/SqsConnector.php:29
+     25▕             }
+     26▕         }
+     27▕ 
+     28▕         return new SqsQueue(
+  ➜  29▕             new SqsClient(
+     30▕                 Arr::except($config, ['token'])
+     31▕             ),
+     32▕             $config['queue'],
+     33▕             $config['prefix'] ?? '',
+
+     25▕             }
+     26▕         }
+     27▕ 
+     28▕         return new SqsQueue(
+  ➜  29▕             new SqsClient(
+     30▕                 Arr::except($config, ['token'])
+     31▕             ),
+     32▕             $config['queue'],
+     33▕             $config['prefix'] ?? '',
+
+      [2m+18 vendor frames [22m
+
+      [2m+18 vendor frames [22m
+
+  19  artisan:13
+      Illuminate\Foundation\Application::handleCommand()
+
+  19  artisan:13
+      Illuminate\Foundation\Application::handleCommand()
+
+Xdebug: [Step Debug] Could not connect to debugging client. Tried: localhost:9003 (through xdebug.client_host/xdebug.client_port).Xdebug: [Step Debug] Could not connect to debugging client. Tried: localhost:9003 (through xdebug.client_host/xdebug.client_port).
+
+Xdebug: [Step Debug] Could not connect to debugging client. Tried: localhost:9003 (through xdebug.client_host/xdebug.client_port).
+Xdebug: [Step Debug] Could not connect to debugging client. Tried: localhost:9003 (through xdebug.client_host/xdebug.client_port).
+Xdebug: [Step Debug] Could not connect to debugging client. Tried: localhost:9003 (through xdebug.client_host/xdebug.client_port).
+Xdebug: [Step Debug] Could not connect to debugging client. Tried: localhost:9003 (through xdebug.client_host/xdebug.client_port).
+Xdebug: [Step Debug] Could not connect to debugging client. Tried: localhost:9003 (through xdebug.client_host/xdebug.client_port).Xdebug: [Step Debug] Could not connect to debugging client. Tried: localhost:9003 (through xdebug.client_host/xdebug.client_port).
+
+Xdebug: [Step Debug] Could not connect to debugging client. Tried: localhost:9003 (through xdebug.client_host/xdebug.client_port).Xdebug: [Step Debug] Could not connect to debugging client. Tried: localhost:9003 (through xdebug.client_host/xdebug.client_port).
+
+Xdebug: [Step Debug] Could not connect to debugging client. Tried: localhost:9003 (through xdebug.client_host/xdebug.client_port).Xdebug: [Step Debug] Could not connect to debugging client. Tried: localhost:9003 (through xdebug.client_host/xdebug.client_port).
+
+Xdebug: [Step Debug] Could not connect to debugging client. Tried: localhost:9003 (through xdebug.client_host/xdebug.client_port).Xdebug: [Step Debug] Could not connect to debugging client. Tried: localhost:9003 (through xdebug.client_host/xdebug.client_port).
+
+Xdebug: [Step Debug] Could not connect to debugging client. Tried: localhost:9003 (through xdebug.client_host/xdebug.client_port).
+Xdebug: [Step Debug] Could not connect to debugging client. Tried: localhost:9003 (through xdebug.client_host/xdebug.client_port).
+Xdebug: [Step Debug] Could not connect to debugging client. Tried: localhost:9003 (through xdebug.client_host/xdebug.client_port).Xdebug: [Step Debug] Could not connect to debugging client. Tried: localhost:9003 (through xdebug.client_host/xdebug.client_port).
+
+Xdebug: [Step Debug] Could not connect to debugging client. Tried: localhost:9003 (through xdebug.client_host/xdebug.client_port).
+Xdebug: [Step Debug] Could not connect to debugging client. Tried: localhost:9003 (through xdebug.client_host/xdebug.client_port).
+Xdebug: [Step Debug] Could not connect to debugging client. Tried: localhost:9003 (through xdebug.client_host/xdebug.client_port).
+Xdebug: [Step Debug] Could not connect to debugging client. Tried: localhost:9003 (through xdebug.client_host/xdebug.client_port).Xdebug: [Step Debug] Could not connect to debugging client. Tried: localhost:9003 (through xdebug.client_host/xdebug.client_port).Xdebug: [Step Debug] Could not connect to debugging client. Tried: localhost:9003 (through xdebug.client_host/xdebug.client_port).
+
+
+Xdebug: [Step Debug] Could not connect to debugging client. Tried: localhost:9003 (through xdebug.client_host/xdebug.client_port).
+Xdebug: [Step Debug] Could not connect to debugging client. Tried: localhost:9003 (through xdebug.client_host/xdebug.client_port).Xdebug: [Step Debug] Could not connect to debugging client. Tried: localhost:9003 (through xdebug.client_host/xdebug.client_port).
+
+Xdebug: [Step Debug] Could not connect to debugging client. Tried: localhost:9003 (through xdebug.client_host/xdebug.client_port).
+Xdebug: [Step Debug] Could not connect to debugging client. Tried: localhost:9003 (through xdebug.client_host/xdebug.client_port).
+Xdebug: [Step Debug] Could not connect to debugging client. Tried: localhost:9003 (through xdebug.client_host/xdebug.client_port).Xdebug: [Step Debug] Could not connect to debugging client. Tried: localhost:9003 (through xdebug.client_host/xdebug.client_port).
+
+Xdebug: [Step Debug] Could not connect to debugging client. Tried: localhost:9003 (through xdebug.client_host/xdebug.client_port).
+Xdebug: [Step Debug] Could not connect to debugging client. Tried: localhost:9003 (through xdebug.client_host/xdebug.client_port).
+Xdebug: [Step Debug] Could not connect to debugging client. Tried: localhost:9003 (through xdebug.client_host/xdebug.client_port).
+Xdebug: [Step Debug] Could not connect to debugging client. Tried: localhost:9003 (through xdebug.client_host/xdebug.client_port).
+Xdebug: [Step Debug] Could not connect to debugging client. Tried: localhost:9003 (through xdebug.client_host/xdebug.client_port).Xdebug: [Step Debug] Could not connect to debugging client. Tried: localhost:9003 (through xdebug.client_host/xdebug.client_port).
+
+Xdebug: [Step Debug] Could not connect to debugging client. Tried: localhost:9003 (through xdebug.client_host/xdebug.client_port).
+Xdebug: [Step Debug] Could not connect to debugging client. Tried: localhost:9003 (through xdebug.client_host/xdebug.client_port).
+Xdebug: [Step Debug] Could not connect to debugging client. Tried: localhost:9003 (through xdebug.client_host/xdebug.client_port).
+Xdebug: [Step Debug] Could not connect to debugging client. Tried: localhost:9003 (through xdebug.client_host/xdebug.client_port).Xdebug: [Step Debug] Could not connect to debugging client. Tried: localhost:9003 (through xdebug.client_host/xdebug.client_port).
+
+Xdebug: [Step Debug] Could not connect to debugging client. Tried: localhost:9003 (through xdebug.client_host/xdebug.client_port).
+Xdebug: [Step Debug] Could not connect to debugging client. Tried: localhost:9003 (through xdebug.client_host/xdebug.client_port).
+Xdebug: [Step Debug] Could not connect to debugging client. Tried: localhost:9003 (through xdebug.client_host/xdebug.client_port).Xdebug: [Step Debug] Could not connect to debugging client. Tried: localhost:9003 (through xdebug.client_host/xdebug.client_port).
+
+Xdebug: [Step Debug] Could not connect to debugging client. Tried: localhost:9003 (through xdebug.client_host/xdebug.client_port).Xdebug: [Step Debug] Could not connect to debugging client. Tried: localhost:9003 (through xdebug.client_host/xdebug.client_port).
+
+Xdebug: [Step Debug] Could not connect to debugging client. Tried: localhost:9003 (through xdebug.client_host/xdebug.client_port).
+Xdebug: [Step Debug] Could not connect to debugging client. Tried: localhost:9003 (through xdebug.client_host/xdebug.client_port).Xdebug: [Step Debug] Could not connect to debugging client. Tried: localhost:9003 (through xdebug.client_host/xdebug.client_port).
+
+Xdebug: [Step Debug] Could not connect to debugging client. Tried: localhost:9003 (through xdebug.client_host/xdebug.client_port).
+  2025-02-02 18:14:03 App\Jobs\BinanceMarketDataProvider ............. RUNNING
+  2025-02-02 18:14:19 App\Jobs\BinanceMarketDataProvider ............ 16s DONE
+  2025-02-02 18:16:27 App\Jobs\BinanceMarketDataProvider ............. RUNNING
+  2025-02-02 18:16:51 App\Jobs\BinanceMarketDataProvider ............ 24s FAIL
+  2025-02-02 18:18:12 App\Jobs\BinanceMarketDataProvider ............. RUNNING
+  2025-02-02 18:18:34 App\Jobs\BinanceMarketDataProvider ............ 22s FAIL
+  2025-02-02 18:18:34 App\Jobs\BinanceMarketDataProvider ............. RUNNING
+  2025-02-02 18:18:57 App\Jobs\BinanceMarketDataProvider ............ 22s FAIL
+  2025-02-02 18:19:42 App\Jobs\BinanceMarketDataProvider ............. RUNNING
+  2025-02-02 18:20:05 App\Jobs\BinanceMarketDataProvider ............ 23s FAIL
+  2025-02-02 18:20:05 App\Jobs\BinanceMarketDataProvider ............. RUNNING
+  2025-02-02 18:20:31 App\Jobs\BinanceMarketDataProvider ............ 26s FAIL
+  2025-02-02 18:20:31 App\Jobs\BinanceMarketDataProvider ............. RUNNING
+  2025-02-02 18:20:53 App\Jobs\BinanceMarketDataProvider ............ 22s FAIL
+  2025-02-02 18:21:52 App\Jobs\BinanceMarketDataProvider ............. RUNNING
+  2025-02-02 18:22:14 App\Jobs\BinanceMarketDataProvider ............ 22s FAIL
+  2025-02-02 18:22:14 App\Jobs\BinanceMarketDataProvider ............. RUNNING
+  2025-02-02 18:22:36 App\Jobs\BinanceMarketDataProvider ............ 21s FAIL
+Xdebug: [Step Debug] Could not connect to debugging client. Tried: localhost:9003 (through xdebug.client_host/xdebug.client_port).Xdebug: [Step Debug] Could not connect to debugging client. Tried: localhost:9003 (through xdebug.client_host/xdebug.client_port).
+
+Xdebug: [Step Debug] Could not connect to debugging client. Tried: localhost:9003 (through xdebug.client_host/xdebug.client_port).
+  2025-02-02 18:24:33 App\Jobs\BinanceMarketDataProvider ............. RUNNING
+  2025-02-02 18:24:53 App\Jobs\BinanceMarketDataProvider ............ 20s FAIL
+Xdebug: [Step Debug] Could not connect to debugging client. Tried: localhost:9003 (through xdebug.client_host/xdebug.client_port).
+Xdebug: [Step Debug] Could not connect to debugging client. Tried: localhost:9003 (through xdebug.client_host/xdebug.client_port).
+Xdebug: [Step Debug] Could not connect to debugging client. Tried: localhost:9003 (through xdebug.client_host/xdebug.client_port).
+Xdebug: [Step Debug] Could not connect to debugging client. Tried: localhost:9003 (through xdebug.client_host/xdebug.client_port).
+Xdebug: [Step Debug] Could not connect to debugging client. Tried: localhost:9003 (through xdebug.client_host/xdebug.client_port).Xdebug: [Step Debug] Could not connect to debugging client. Tried: localhost:9003 (through xdebug.client_host/xdebug.client_port).
+Xdebug: [Step Debug] Could not connect to debugging client. Tried: localhost:9003 (through xdebug.client_host/xdebug.client_port).
+Xdebug: [Step Debug] Could not connect to debugging client. Tried: localhost:9003 (through xdebug.client_host/xdebug.client_port).
+
+Xdebug: [Step Debug] Could not connect to debugging client. Tried: localhost:9003 (through xdebug.client_host/xdebug.client_port).
+Xdebug: [Step Debug] Could not connect to debugging client. Tried: localhost:9003 (through xdebug.client_host/xdebug.client_port).Xdebug: [Step Debug] Could not connect to debugging client. Tried: localhost:9003 (through xdebug.client_host/xdebug.client_port).
+
+Xdebug: [Step Debug] Could not connect to debugging client. Tried: localhost:9003 (through xdebug.client_host/xdebug.client_port).
+Xdebug: [Step Debug] Could not connect to debugging client. Tried: localhost:9003 (through xdebug.client_host/xdebug.client_port).
+Xdebug: [Step Debug] Could not connect to debugging client. Tried: localhost:9003 (through xdebug.client_host/xdebug.client_port).
+Xdebug: [Step Debug] Could not connect to debugging client. Tried: localhost:9003 (through xdebug.client_host/xdebug.client_port).
+Xdebug: [Step Debug] Could not connect to debugging client. Tried: localhost:9003 (through xdebug.client_host/xdebug.client_port).
+Xdebug: [Step Debug] Could not connect to debugging client. Tried: localhost:9003 (through xdebug.client_host/xdebug.client_port).Xdebug: [Step Debug] Could not connect to debugging client. Tried: localhost:9003 (through xdebug.client_host/xdebug.client_port).
+
+Xdebug: [Step Debug] Could not connect to debugging client. Tried: localhost:9003 (through xdebug.client_host/xdebug.client_port).
+Xdebug: [Step Debug] Could not connect to debugging client. Tried: localhost:9003 (through xdebug.client_host/xdebug.client_port).
+Xdebug: [Step Debug] Could not connect to debugging client. Tried: localhost:9003 (through xdebug.client_host/xdebug.client_port).
+Xdebug: [Step Debug] Could not connect to debugging client. Tried: localhost:9003 (through xdebug.client_host/xdebug.client_port).
+Xdebug: [Step Debug] Could not connect to debugging client. Tried: localhost:9003 (through xdebug.client_host/xdebug.client_port).
+Xdebug: [Step Debug] Could not connect to debugging client. Tried: localhost:9003 (through xdebug.client_host/xdebug.client_port).
+Xdebug: [Step Debug] Could not connect to debugging client. Tried: localhost:9003 (through xdebug.client_host/xdebug.client_port).
+Xdebug: [Step Debug] Could not connect to debugging client. Tried: localhost:9003 (through xdebug.client_host/xdebug.client_port).Xdebug: [Step Debug] Could not connect to debugging client. Tried: localhost:9003 (through xdebug.client_host/xdebug.client_port).
+Xdebug: [Step Debug] Could not connect to debugging client. Tried: localhost:9003 (through xdebug.client_host/xdebug.client_port).
+
+Xdebug: [Step Debug] Could not connect to debugging client. Tried: localhost:9003 (through xdebug.client_host/xdebug.client_port).
+Xdebug: [Step Debug] Could not connect to debugging client. Tried: localhost:9003 (through xdebug.client_host/xdebug.client_port).
+Xdebug: [Step Debug] Could not connect to debugging client. Tried: localhost:9003 (through xdebug.client_host/xdebug.client_port).
+Xdebug: [Step Debug] Could not connect to debugging client. Tried: localhost:9003 (through xdebug.client_host/xdebug.client_port).
+Xdebug: [Step Debug] Could not connect to debugging client. Tried: localhost:9003 (through xdebug.client_host/xdebug.client_port).
+Xdebug: [Step Debug] Could not connect to debugging client. Tried: localhost:9003 (through xdebug.client_host/xdebug.client_port).
+Xdebug: [Step Debug] Could not connect to debugging client. Tried: localhost:9003 (through xdebug.client_host/xdebug.client_port).
+Xdebug: [Step Debug] Could not connect to debugging client. Tried: localhost:9003 (through xdebug.client_host/xdebug.client_port).
+Xdebug: [Step Debug] Could not connect to debugging client. Tried: localhost:9003 (through xdebug.client_host/xdebug.client_port).
+Xdebug: [Step Debug] Could not connect to debugging client. Tried: localhost:9003 (through xdebug.client_host/xdebug.client_port).
+Xdebug: [Step Debug] Could not connect to debugging client. Tried: localhost:9003 (through xdebug.client_host/xdebug.client_port).
+Xdebug: [Step Debug] Could not connect to debugging client. Tried: localhost:9003 (through xdebug.client_host/xdebug.client_port).
+Xdebug: [Step Debug] Could not connect to debugging client. Tried: localhost:9003 (through xdebug.client_host/xdebug.client_port).
+Xdebug: [Step Debug] Could not connect to debugging client. Tried: localhost:9003 (through xdebug.client_host/xdebug.client_port).
+Xdebug: [Step Debug] Could not connect to debugging client. Tried: localhost:9003 (through xdebug.client_host/xdebug.client_port).
+Xdebug: [Step Debug] Could not connect to debugging client. Tried: localhost:9003 (through xdebug.client_host/xdebug.client_port).
+Xdebug: [Step Debug] Could not connect to debugging client. Tried: localhost:9003 (through xdebug.client_host/xdebug.client_port).
+Xdebug: [Step Debug] Could not connect to debugging client. Tried: localhost:9003 (through xdebug.client_host/xdebug.client_port).
+Xdebug: [Step Debug] Could not connect to debugging client. Tried: localhost:9003 (through xdebug.client_host/xdebug.client_port).
+Xdebug: [Step Debug] Could not connect to debugging client. Tried: localhost:9003 (through xdebug.client_host/xdebug.client_port).
+Xdebug: [Step Debug] Could not connect to debugging client. Tried: localhost:9003 (through xdebug.client_host/xdebug.client_port).
+Xdebug: [Step Debug] Could not connect to debugging client. Tried: localhost:9003 (through xdebug.client_host/xdebug.client_port).
+Xdebug: [Step Debug] Could not connect to debugging client. Tried: localhost:9003 (through xdebug.client_host/xdebug.client_port).
+Xdebug: [Step Debug] Could not connect to debugging client. Tried: localhost:9003 (through xdebug.client_host/xdebug.client_port).
+Xdebug: [Step Debug] Could not connect to debugging client. Tried: localhost:9003 (through xdebug.client_host/xdebug.client_port).
+Xdebug: [Step Debug] Could not connect to debugging client. Tried: localhost:9003 (through xdebug.client_host/xdebug.client_port).
+Xdebug: [Step Debug] Could not connect to debugging client. Tried: localhost:9003 (through xdebug.client_host/xdebug.client_port).
+Xdebug: [Step Debug] Could not connect to debugging client. Tried: localhost:9003 (through xdebug.client_host/xdebug.client_port).
+  2025-02-03 01:02:25 App\Jobs\BinanceMarketDataProvider ............. RUNNING
+  2025-02-03 01:02:30 App\Jobs\BinanceMarketDataProvider ............. 4s FAIL
+  2025-02-03 01:02:33 App\Jobs\BinanceMarketDataProvider ............. RUNNING
+  2025-02-03 01:02:37 App\Jobs\BinanceMarketDataProvider ............. 4s FAIL
+  2025-02-03 01:03:01 App\Jobs\BinanceMarketDataProvider ............. RUNNING
+  2025-02-03 01:03:03 App\Jobs\BinanceMarketDataProvider ............. 2s FAIL
+Xdebug: [Step Debug] Could not connect to debugging client. Tried: localhost:9003 (through xdebug.client_host/xdebug.client_port).
+  2025-02-03 01:03:41 App\Jobs\BinanceMarketDataProvider ............. RUNNING
+  2025-02-03 01:03:43 App\Jobs\BinanceMarketDataProvider ............. 2s FAIL
+Xdebug: [Step Debug] Could not connect to debugging client. Tried: localhost:9003 (through xdebug.client_host/xdebug.client_port).
+  2025-02-03 01:03:49 App\Jobs\BinanceMarketDataProvider ............. RUNNING
+  2025-02-03 01:03:51 App\Jobs\BinanceMarketDataProvider ............. 2s FAIL
+Xdebug: [Step Debug] Could not connect to debugging client. Tried: localhost:9003 (through xdebug.client_host/xdebug.client_port).
+  2025-02-03 01:04:04 App\Jobs\BinanceMarketDataProvider ............. RUNNING
+Xdebug: [Step Debug] Could not connect to debugging client. Tried: localhost:9003 (through xdebug.client_host/xdebug.client_port).
+Xdebug: [Step Debug] Could not connect to debugging client. Tried: localhost:9003 (through xdebug.client_host/xdebug.client_port).
+  2025-02-03 01:04:06 App\Jobs\BinanceMarketDataProvider ............. 2s FAIL
+Xdebug: [Step Debug] Could not connect to debugging client. Tried: localhost:9003 (through xdebug.client_host/xdebug.client_port).
+  2025-02-03 01:04:42 App\Jobs\BinanceMarketDataProvider ............. RUNNING
+  2025-02-03 01:04:44 App\Jobs\BinanceMarketDataProvider ............. 2s DONE
+Xdebug: [Step Debug] Could not connect to debugging client. Tried: localhost:9003 (through xdebug.client_host/xdebug.client_port).
+  2025-02-03 01:04:48 App\Jobs\BinanceMarketDataProvider ............. RUNNING
+  2025-02-03 01:04:50 App\Jobs\BinanceMarketDataProvider ............. 2s DONE
+Xdebug: [Step Debug] Could not connect to debugging client. Tried: localhost:9003 (through xdebug.client_host/xdebug.client_port).
+  2025-02-03 01:04:53 App\Jobs\BinanceMarketDataProvider ............. RUNNING
+Xdebug: [Step Debug] Could not connect to debugging client. Tried: localhost:9003 (through xdebug.client_host/xdebug.client_port).
+  2025-02-03 01:04:55 App\Jobs\BinanceMarketDataProvider ............. 2s DONE
+Xdebug: [Step Debug] Could not connect to debugging client. Tried: localhost:9003 (through xdebug.client_host/xdebug.client_port).
+  2025-02-03 01:04:56 App\Jobs\BinanceMarketDataProvider ............. RUNNING
+  2025-02-03 01:04:58 App\Jobs\BinanceMarketDataProvider ............. 2s DONE
+  2025-02-03 01:05:17 App\Jobs\BinanceMarketDataProvider ............. RUNNING
+  2025-02-03 01:05:19 App\Jobs\BinanceMarketDataProvider ............. 2s DONE
+  2025-02-03 01:05:20 App\Jobs\BinanceMarketDataProvider ............. RUNNING
+  2025-02-03 01:05:22 App\Jobs\BinanceMarketDataProvider ............. 2s DONE
+  2025-02-03 01:05:23 App\Jobs\BinanceMarketDataProvider ............. RUNNING
+  2025-02-03 01:05:27 App\Jobs\BinanceMarketDataProvider ............. 3s DONE
+  2025-02-03 01:07:10 App\Jobs\BinanceMarketDataProvider ............. RUNNING
+  2025-02-03 01:07:14 App\Jobs\BinanceMarketDataProvider ............. 4s DONE
+  2025-02-03 01:07:21 App\Jobs\BinanceMarketDataProvider ............. RUNNING
+  2025-02-03 01:07:25 App\Jobs\BinanceMarketDataProvider ............. 3s DONE
+Xdebug: [Step Debug] Could not connect to debugging client. Tried: localhost:9003 (through xdebug.client_host/xdebug.client_port).
+  2025-02-16 17:46:24 App\Jobs\BinanceMarketDataProvider ............. RUNNING
+  2025-02-16 17:46:26 App\Jobs\BinanceMarketDataProvider ............. 2s DONE
+Xdebug: [Step Debug] Could not connect to debugging client. Tried: localhost:9003 (through xdebug.client_host/xdebug.client_port).
+  2025-02-16 17:46:34 App\Jobs\BinanceMarketDataProvider ............. RUNNING
+  2025-02-16 17:46:36 App\Jobs\BinanceMarketDataProvider ............. 2s DONE
+  2025-02-16 21:36:18 App\Jobs\BinanceMarketDataProvider ............. RUNNING
+Xdebug: [Step Debug] Could not connect to debugging client. Tried: localhost:9003 (through xdebug.client_host/xdebug.client_port).
+  2025-02-16 21:37:49 App\Jobs\BinanceMarketDataProvider ............. RUNNING
+  2025-02-16 21:37:49 App\Jobs\BinanceMarketDataProvider ......... 7.36ms FAIL
+  2025-02-22 22:35:42 App\Jobs\BinanceMarketDataProvider ............. RUNNING
+  2025-02-22 22:35:44 App\Jobs\BinanceMarketDataProvider ............. 2s DONE
+  2025-02-22 22:35:59 App\Jobs\BinanceMarketDataProvider ............. RUNNING
+  2025-02-22 22:36:01 App\Jobs\BinanceMarketDataProvider ............. 2s DONE
+
+
+   Illuminate\Database\QueryException 
+
+   Illuminate\Database\QueryException 
+  SQLSTATE[08006] [7] connection to server at "db" (172.20.0.2), port 5432 failed: Connection refused
+	Is the server running on that host and accepting TCP/IP connections? (Connection: pgsql, SQL: select * from "cache" where "key" in (laravel_cache_illuminate:queue:restart))
+
+  SQLSTATE[08006] [7] connection to server at "db" (172.20.0.2), port 5432 failed: Connection refused
+	Is the server running on that host and accepting TCP/IP connections? (Connection: pgsql, SQL: select * from "cache" where "key" in (laravel_cache_illuminate:queue:restart))
+
+  at vendor/laravel/framework/src/Illuminate/Database/Connection.php:825
+
+  at vendor/laravel/framework/src/Illuminate/Database/Connection.php:825
+    821▕                     $this->getName(), $query, $this->prepareBindings($bindings), $e
+    822▕                 );
+    823▕             }
+    824▕ 
+  ➜ 825▕             throw new QueryException(
+    826▕                 $this->getName(), $query, $this->prepareBindings($bindings), $e
+    827▕             );
+    828▕         }
+    829▕     }
+
+      [2m+41 vendor frames [22m
+
+  42  artisan:13
+      Illuminate\Foundation\Application::handleCommand()
+
+    821▕                     $this->getName(), $query, $this->prepareBindings($bindings), $e
+    822▕                 );
+    823▕             }
+    824▕ 
+  ➜ 825▕             throw new QueryException(
+    826▕                 $this->getName(), $query, $this->prepareBindings($bindings), $e
+    827▕             );
+    828▕         }
+    829▕     }
+
+      [2m+41 vendor frames [22m
+
+  42  artisan:13
+      Illuminate\Foundation\Application::handleCommand()
+

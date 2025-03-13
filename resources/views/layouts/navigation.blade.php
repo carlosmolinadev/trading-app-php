@@ -12,8 +12,11 @@
 
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                    <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
-                        {{ __('Dashboard') }}
+                    <x-nav-link :href="route('trade.index')" :active="request()->routeIs('trade')">
+                        {{ __('Trades') }}
+                    </x-nav-link>
+                    <x-nav-link :href="route('trade-setting.create')" :active="request()->routeIs('trade-setting.create')">
+                        {{ __('Trade Settings') }}
                     </x-nav-link>
                 </div>
             </div>
